@@ -1,0 +1,18 @@
+<?php
+	session_start();
+	if(!empty($_POST['check_code'])){
+		if($_POST['check_code']==$_SESSION['my_check_code']){
+			if(!empty($_POST['name'])&&!empty($_POST['passwd'])){
+				$name=$_POST['name'];
+				$passwd=$_POST['passwd'];
+				if($name=="admin"&&$passwd=="admin"){
+					$_SESSION['name']=$name;
+					header("location:loginOK.php");
+					exit();
+				}
+			}
+		}
+	}
+	header("location:login.php");
+	exit();
+?>
